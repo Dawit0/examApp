@@ -21,6 +21,17 @@ func NewQuestionHandler(sv *question.QuestionService, esv *exam.ExamService) *Qu
 	return &QuestionHandler{service: sv, examuc: esv}
 }
 
+// Create Question godoc
+// @Summary Create a new Question
+// @Description add a new exam question
+// @Tags Questions
+// @Accept json
+// @Produce json
+// @Param request body dto.CreateQuestion true "Created Question "
+// @Success 200 {object} dto.QuestionResponse "Question created successfully "
+// @Failure 400 {object} dto.ErrorResponse "Bad Request"
+// @Failure 500 {object} dto.ErrorResponse "Internal Server Error"
+// @Router /question/create [post]
 func (h *QuestionHandler) CreateQuestion(c *gin.Context) {
 	var model dto.CreateQuestion
 
@@ -68,6 +79,16 @@ func (h *QuestionHandler) CreateQuestion(c *gin.Context) {
 	}})
 }
 
+// Get Question By ID
+// @Summary Get Question by ID
+// @Description use question id to get only one question
+// @Tags Questions
+// @Produce json
+// @Param id path int true "Question ID"
+// @Success 200 {object} dto.QuestionResponse "Question found"
+// @Failure 400 {object} dto.ErrorResponse "Bad Request"
+// @Failure 500 {object} dto.ErrorResponse "Internal Server Error"
+// @Router /question/{id} [get]
 func (h *QuestionHandler) GetOneQuestion(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 
@@ -98,6 +119,15 @@ func (h *QuestionHandler) GetOneQuestion(c *gin.Context) {
 	}})
 }
 
+// Get All Question godoc
+// @Summary GetAll Question
+// @Description All Question as a lis
+// @Tags Questions
+// @Produce json
+// @Success 200 {object} []dto.QuestionResponse "ALL Question Founded"
+// @Failure 400 {object} dto.ErrorResponse "Bad Request"
+// @Failure 500 {object} dto.ErrorResponse "Internal Server Error"
+// @Router /question [get]
 func (h *QuestionHandler) GetAllQuestion(c *gin.Context) {
 	val, err := h.service.GetAllQuestion()
 
@@ -132,6 +162,18 @@ func (h *QuestionHandler) GetAllQuestion(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": out})
 }
 
+// Update Question godoc
+// @Summary Update Question
+// @Description Update Question by ID
+// @Tags Questions
+// @Accept json
+// @Produce json
+// @Param id path int true "Question ID"
+// @Param request body dto.CreateQuestion true "Update Question"
+// @Success 200 {object} dto.QuestionResponse "Question updated successfully"
+// @Failure 400 {object} dto.ErrorResponse "Bad Request"
+// @Failure 500 {object} dto.ErrorResponse "Internal Server Error"
+// @Router /question/{id} [put]
 func (h *QuestionHandler) UpdateQuestion(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 
@@ -183,6 +225,16 @@ func (h *QuestionHandler) UpdateQuestion(c *gin.Context) {
 	}})
 }
 
+// Delete Question godoc
+// @Summary Delete Question
+// @Description Delete Question by ID
+// @Tags Questions
+// @Produce json
+// @Param id path int true "Question id"
+// @Success 200 {object} map[string]string "Question Deleted Successfully"
+// @Failure 400 {object} dto.ErrorResponse "Bad Request"
+// @Failure 500 {object} dto.ErrorResponse "Internal Server Error"
+// @Router /question/{id} [delete]
 func (h *QuestionHandler) DeleteQuestion(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 

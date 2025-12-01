@@ -1,5 +1,6 @@
 package dto
 
+// CreateQuestionRequest create question payload
 type CreateQuestion struct {
 	Question        string            `json:"question"`
 	Choose          map[string]string `json:"choose"`
@@ -10,6 +11,8 @@ type CreateQuestion struct {
 	ExamID          uint              `json:"exam_id"`
 }
 
+// QuestionResponse response question payload
+
 type QuestionResponse struct {
 	ID              uint
 	Question        string
@@ -19,4 +22,12 @@ type QuestionResponse struct {
 	ImageUrl        string
 	Question_Number int
 	Exam            ExamResponse
+}
+
+type ErrorResponse struct {
+	Error string `json:"error"`
+}
+
+type SuccessResponse struct {
+	Message string `json:"message"`
 }

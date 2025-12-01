@@ -7,6 +7,9 @@ import (
 	"gorm.io/gorm"
 )
 
+// @Question Represent an exam question
+// @Description Question model used for exam questions
+
 type QuestionRepo struct {
 	DB *gorm.DB
 }

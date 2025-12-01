@@ -1,6 +1,7 @@
 package main
 
 import (
+	"examApp/docs"
 	dv1 "examApp/internal/delivery/exam"
 	dv "examApp/internal/delivery/question"
 	"examApp/internal/infrastructure/database"
@@ -12,8 +13,18 @@ import (
 	uc1 "examApp/internal/service/exam"
 	uc "examApp/internal/service/question"
 
+	_ "examApp/docs" // Import generated docs
+
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
+
+// @title Exam API
+// @version 1.0
+// @description Exam API
+// @host localhost:8080
+// @BasePath /
 
 func main() {
 	logger.InitZap("examApp")
@@ -39,6 +50,9 @@ func main() {
 
 	router.QuestionRouter(handler, route)
 	router.ExamRoute(handler1, route)
+
+	docs.SwaggerInfo.BasePath = "/"
+	route.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	logger.Log.Info("Server running on :8080")
 	route.Run(":8080")

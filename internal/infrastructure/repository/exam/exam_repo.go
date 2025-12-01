@@ -11,6 +11,9 @@ import (
 	"gorm.io/gorm"
 )
 
+// @Exam Represent an exam
+// @Description Exam model used for exam questions
+
 type ExamRepo struct {
 	DB *gorm.DB
 }

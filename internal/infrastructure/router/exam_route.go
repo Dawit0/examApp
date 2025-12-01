@@ -7,7 +7,7 @@ import (
 )
 
 func ExamRoute(hands *exam.ExamHandler, r *gin.Engine) {
-	api := r.Group("/exam")
+	api := r.Group("/api/v1/exam_app")
 	{
 		api.POST("", hands.CreateExam)
 		api.GET("/", hands.GetOneExam)

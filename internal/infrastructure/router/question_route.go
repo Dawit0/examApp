@@ -7,7 +7,7 @@ import (
 )
 
 func QuestionRouter(hands *question.QuestionHandler, r *gin.Engine) {
-	api := r.Group("/question")
+	api := r.Group("/api/v1/exam_app")
 	{
 		api.POST("/create", hands.CreateQuestion)
 		api.GET("/:id", hands.GetOneQuestion)

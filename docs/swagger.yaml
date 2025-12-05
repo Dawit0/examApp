@@ -100,7 +100,7 @@ definitions:
       question_Number:
         type: integer
     type: object
-host: localhost:8080
+host: localhost:9090
 info:
   contact: {}
   description: Exam API

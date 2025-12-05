@@ -1,7 +1,7 @@
 package model
 
 type ExamModel struct {
-	ID          uint   `gorm:"primeryKey,autoIncrement"`
+	ID          uint   `gorm:"primaryKey,autoIncrement"`
 	Subject     string `gorm:"index"`
 	Year        int    `gorm:"index"`
 	Departement string `gorm:"index"`

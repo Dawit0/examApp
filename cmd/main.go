@@ -23,7 +23,7 @@ import (
 // @title Exam API
 // @version 1.0
 // @description Exam API
-// @host localhost:8080
+// @host localhost:9090
 // @BasePath /
 
 func main() {
@@ -54,6 +54,6 @@ func main() {
 	docs.SwaggerInfo.BasePath = "/"
 	route.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	logger.Log.Info("Server running on :8080")
-	route.Run(":8080")
+	logger.Log.Info("Server running on :9090")
+	route.Run(":9090")
 }
